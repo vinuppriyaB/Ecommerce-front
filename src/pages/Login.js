@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from  "styled-components";
 import {mobile} from "../responsive";
-
+import { publicRequest } from '../requestMethod';
+import { login } from '../redux/apiCalls';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router';
 
 const Container=styled.div`
 width:100vw;
@@ -62,19 +65,34 @@ const Button=styled.button`
     text-decoration: underline;
     cursor: pointer;
     `
-const Register = () => {
+const Login = () => {
+const history =useHistory();
+    const [email,setEmail]=useState("");
+    const [password,setPassword]=useState("");
+   const dispatch = useDispatch()
+
+    const handleLoginClick=(e)=>{
+        e.preventDefault()
+        login(dispatch,{email,password})
+    }
+
+
     return (
         <Container>
         <Wrapper>
         <Title> SIGN IN </Title>
         <Form>
 
-        <Input placeholder="email" />
-        <Input placeholder="password" />
+        <Input placeholder="email" 
+            onChange={(e)=>{setEmail(e.target.value)}}
+        />
+        <Input placeholder="password" 
+        onChange={(e)=>{setPassword(e.target.value)}}
+        />
         
-        <Button>LOGIN</Button>
+        <Button onClick={(e)=>handleLoginClick(e)} >LOGIN</Button>
         <Link>DO NOT REMEMBER THE PASSWORD?</Link>
-        <Link>CREATE A NEW ACCOUNT</Link>
+        <Link onClick={()=>history.push("/register")}>CREATE A NEW ACCOUNT</Link>
         </Form>
 
         </Wrapper>
@@ -84,6 +102,6 @@ const Register = () => {
     )
 }
 
-export default Register
+export default Login
 
 

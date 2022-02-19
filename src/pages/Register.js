@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from  "styled-components";
 import {mobile} from "../responsive";
+import { publicRequest } from '../requestMethod';
+import { register } from '../redux/apiCalls';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router';
 
 
 const Container=styled.div`
@@ -59,21 +63,45 @@ const Button=styled.button`
     cursor: pointer;
     `
 const Register = () => {
+    const [firstName,setFirstName]=useState("");
+    const [lastName,setLastName]=useState("");
+    const [email,setEmail]=useState("");
+    const [password,setPassword]=useState("");
+
+    const dispatch = useDispatch()
+   
+    const handleRegistrationClick=(e)=>{
+        const username=`${firstName} ${lastName}`
+        e.preventDefault()
+        register(dispatch,{username,email,password})
+    }
+
+
     return (
         <Container>
         <Wrapper>
         <Title> CREATE AN ACCOUNT </Title>
         <Form>
-        <Input placeholder="first name" />
-        <Input placeholder="last name" />
-        <Input placeholder="email" />
-        <Input placeholder="password" />
-        <Input placeholder="confirm password" />
+        <Input placeholder="first name" 
+        onChange={(e)=>{setFirstName(e.target.value)}}
+        />
+        <Input placeholder="last name"
+        onChange={(e)=>setLastName(e.target.value)} 
+        />
+        <Input placeholder="email" 
+        onChange={(e)=>{setEmail(e.target.value)}}
+        />
+        <Input placeholder="password" 
+        onChange={(e)=>{setPassword(e.target.value)}}
+        />
+        <Input placeholder="confirm password"
+        onChange={(e)=>{setPassword(e.target.value)}} 
+        />
         <Agreement>
         By creating an account, I consent to the processing of my personal
         data in accordance with the <b>PRIVACY POLICY</b>
         </Agreement>
-        <Button>CREATE</Button>
+        <Button onClick={(e)=>handleRegistrationClick(e) }>CREATE</Button>
         </Form>
 
         </Wrapper>

@@ -131,7 +131,7 @@ const dispatch = useDispatch();
     useEffect(() => {
         const getProduct =async()=>{
         try{
-            const res =await axios.get("http://localhost:5000/api/product/find/"+id)
+            const res =await publicRequest.get("/product/find/"+id)
             console.log(res.data)
             setProduct(res.data);
         }catch(err){

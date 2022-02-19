@@ -2,7 +2,7 @@ import { Button } from '@mui/material'
 import axios from 'axios';
 import react, { useState,useEffect } from "react";
 import StripeCheckout from 'react-stripe-checkout';
-
+import { publicRequest } from '../requestMethod';
 const Pay = () => {
     const KEY ="pk_test_51KSOH5SJ3Qu163yRvDRSTElNMPWmYuC9HEzkwA9SJmjaRWk0Em0Ij3wRriZI4HhOXreYizpbOHK4iUpRFdvqwaWV00Yho9dDTa"
 
@@ -16,7 +16,7 @@ useEffect(() => {
     const makeRequest= async()=>{
 
         try{
-          const response = await axios.post("http://localhost:5000/api/checkout/payment",{
+          const response = await publicRequest.post("http://localhost:5000/api/checkout/payment",{
               tokenId:stripeToken.id,
               amount:2000,
           })

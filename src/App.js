@@ -12,13 +12,15 @@ import Success from './pages/Success';
 
 
 function App() {
-  const user=true;
+  
   return (
     <Router>
     
     <Switch>
       <Route  exact path="/">
-        <Home/>
+
+      <Home/>
+
       </Route>
       <Route  exact path="/products/:category">
         <ProductList/>
@@ -30,8 +32,7 @@ function App() {
         <Cart/>
       </Route>
       <Route  exact path="/login">
-      {user ? <Redirect to="/"/> : <Login/> }
-
+      <Login/> 
       </Route>
       <Route  exact path="/register">
         <Register/>
