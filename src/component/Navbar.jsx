@@ -80,9 +80,11 @@ const Navbar = () => {
         </Left>
 
         <Right>
-          <MenuItem>REGISTER</MenuItem>
+          <MenuItem onClick={() => history.push("/register")}>
+            REGISTER
+          </MenuItem>
 
-          <MenuItem>SIGN IN</MenuItem>
+          <MenuItem onClick={() => history.push("/login")}>SIGN OUT</MenuItem>
 
           <Link to="/cart">
             <MenuItem>
