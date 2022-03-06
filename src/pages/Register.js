@@ -41,6 +41,12 @@ const Input = styled.input`
   margin: 20px 10px 0px 0px;
   padding: 3px 5px;
 `;
+const Link = styled.a`
+  margin: 20px 10px 15px 0px;
+  font-size: 12px;
+  text-decoration: underline;
+  cursor: pointer;
+`;
 const Agreement = styled.span`
   font-size: 12px;
   margin: 20px 0px;
@@ -58,7 +64,7 @@ const Register = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const history = useHistory();
   const dispatch = useDispatch();
 
   const handleRegistrationClick = (e) => {
@@ -89,21 +95,20 @@ const Register = () => {
             }}
           />
           <Input
+            type="password"
             placeholder="password"
             onChange={(e) => {
               setPassword(e.target.value);
             }}
           />
           <Input
+            type="password"
             placeholder="confirm password"
             onChange={(e) => {
               setPassword(e.target.value);
             }}
           />
-          <Agreement>
-            By creating an account, I consent to the processing of my personal
-            data in accordance with the <b>PRIVACY POLICY</b>
-          </Agreement>
+
           <Link onClick={() => history.push("/login")}>HAVE ACCOUNT</Link>
           <Button onClick={(e) => handleRegistrationClick(e)}>CREATE</Button>
         </Form>
