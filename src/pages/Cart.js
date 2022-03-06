@@ -81,10 +81,10 @@ const Cart = () => {
   const handlepayement = async (token) => {
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/checkout/payment",
+        "https://pretty-shop.herokuapp.com/api/checkout/payment",
         {
           token: token,
-          amount: 1000,
+          amount: "4500000",
         },
         {
           headers: {
@@ -152,9 +152,11 @@ const Cart = () => {
             <div>Total : {total}</div>
             <StripeCheckout
               name="pretty shop"
-              // amount=10000
+              shipping
+              billing
+              amount="8000000"
               token={handlepayement}
-              stripeKey="pk_test_51KSOH5SJ3Qu163yRvDRSTElNMPWmYuC9HEzkwA9SJmjaRWk0Em0Ij3wRriZI4HhOXreYizpbOHK4iUpRFdvqwaWV00Yho9dDTa"
+              stripeKey="pk_test_51KZueYSH2RYxFIuZKEKHasyyUS6uiESx38YLiSXkYuTUEv6QSNohg7gkSn17pwbQFpOpUYmAZHI7zD322PgOLT2A00B3o3lPHq"
             >
               <Button variant="contained" className="payment_btn">
                 Pay Now
