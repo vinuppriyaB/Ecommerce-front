@@ -1,11 +1,7 @@
 import react, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { popularProducts } from "../data";
 import Product from "./Product";
-import { mobile } from "../responsive";
 import axios from "axios";
-import { object } from "prop-types";
-import { publicRequest } from "../requestMethod";
 
 const Container = styled.div`
   padding: 20px;
@@ -19,21 +15,21 @@ const Products = ({ cat, filter, sort }) => {
 
   useEffect(() => {
     const getProducts = async () => {
-      console.log(cat, filter, sort);
+      // console.log(cat, filter, sort);
       try {
         const res = await axios.get(
           cat
             ? `https://pretty-shop.herokuapp.com/api/product?category=${cat}`
             : "https://pretty-shop.herokuapp.com/api/product"
         );
-        console.log(res.data);
+        // console.log(res.data);
         setProducts(res.data);
       } catch (err) {
         console.log(err);
       }
     };
     getProducts(cat);
-  }, [filter]);
+  }, [filter, cat]);
   useEffect(() => {
     cat &&
       setFilteredProducts(

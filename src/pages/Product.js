@@ -2,16 +2,12 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Navbar from "../component/Navbar";
 import Announcement from "../component/Announcement";
-import Products from "../component/Products";
-import Newsletter from "../component/Newsletter";
 import Footer from "../component/Footer";
 import { Add, Remove } from "@material-ui/icons";
 import { mobile } from "../responsive";
 import { useLocation } from "react-router";
-import { publicRequest } from "../requestMethod";
 import { addProduct } from "../redux/cartRedux";
 import { useDispatch } from "react-redux";
-import { popularProducts } from "../data";
 import axios from "axios";
 
 const Container = styled.div``;
@@ -108,7 +104,7 @@ const Button = styled.button`
 const Product = () => {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
-  console.log(id);
+  // console.log(id);
   const [product, setProduct] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [color, setColor] = useState("");

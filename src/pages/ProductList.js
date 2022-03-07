@@ -3,12 +3,9 @@ import styled from "styled-components";
 import Navbar from "../component/Navbar";
 import Announcement from "../component/Announcement";
 import Products from "../component/Products";
-import Newsletter from "../component/Newsletter";
 import Footer from "../component/Footer";
 import { mobile } from "../responsive";
 import { useLocation } from "react-router-dom";
-import { red } from "@mui/material/colors";
-
 const Container = styled.div`
   min-height: 100vh;
 `;
@@ -89,7 +86,7 @@ const ProductList = () => {
           </Select>
         </Filter>
       </FilterContainer>
-      <Products cat={cat} filter={filter} sort={sort} />
+      <Products cat={cat} filter={filter} sort={sort} key={cat} />
 
       <Footer />
     </Container>

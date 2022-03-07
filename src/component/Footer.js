@@ -24,10 +24,6 @@ const Left = styled.div`
   padding: 20px;
   ${tab({ display: "none" })}
 `;
-const Logo = styled.h1``;
-const Desc = styled.p`
-  margin: 20px 0px;
-`;
 const SocialContainer = styled.div`
   display: flex;
 `;
@@ -41,10 +37,6 @@ const SocialIcon = styled.div`
   align-items: center;
   justify-content: center;
   margin-right: 20px;
-`;
-
-const Title = styled.div`
-  margin-bottom: 30px;
 `;
 
 const Right = styled.div`

@@ -2,12 +2,8 @@ import react, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Navbar from "../component/Navbar";
 import Announcement from "../component/Announcement";
-import Newsletter from "../component/Newsletter";
-import Footer from "../component/Footer";
 import { mobile } from "../responsive";
-import { Add, Remove } from "@material-ui/icons";
 import { useSelector } from "react-redux";
-import { popularProducts } from "../data";
 import axios from "axios";
 import { useHistory } from "react-router";
 import "./Cart.css";
@@ -68,11 +64,11 @@ const Cart = () => {
   const cart = useSelector((state) => state.cart);
   const total = useSelector((state) => state.cart.total);
   const dispatch = useDispatch();
-  console.log(total);
+  // console.log(total);
   const [stripeToken, setStripeToken] = useState(null);
   const onToken = (token) => {
-    console.log(token);
-    console.log(token.id);
+    // console.log(token);
+    // console.log(token.id);
     setStripeToken(token);
   };
   const handleRemoveCartItem = (product, index) => {
@@ -92,7 +88,7 @@ const Cart = () => {
           },
         }
       );
-      console.log(response);
+      // console.log(response);
     } catch (err) {
       console.log(err);
     }
@@ -128,7 +124,12 @@ const Cart = () => {
             {cart.products.map((product, index) => (
               <div className="Product_detailBox" key={index}>
                 <div className="product_image">
-                  <img src={product.img} height="200px" width="200px" />
+                  <img
+                    src={product.img}
+                    height="200px"
+                    width="200px"
+                    alt={product.title}
+                  />
                 </div>
                 <div className="product_detail">
                   <div>{product.title}</div>

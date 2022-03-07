@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { mobile } from "../responsive";
-import { publicRequest } from "../requestMethod";
 import { login } from "../redux/apiCalls";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";

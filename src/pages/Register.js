@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { mobile } from "../responsive";
-import { publicRequest } from "../requestMethod";
 import { register } from "../redux/apiCalls";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
@@ -47,10 +46,7 @@ const Link = styled.a`
   text-decoration: underline;
   cursor: pointer;
 `;
-const Agreement = styled.span`
-  font-size: 12px;
-  margin: 20px 0px;
-`;
+
 const Button = styled.button`
   width: 40%;
   border: none;
